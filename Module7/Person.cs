@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module5
+namespace Module7
 {
-    public class Teacher
+    public class Person
     {
         private string _fname;
         private string _lname;
@@ -18,30 +18,17 @@ namespace Module5
         private long _zip;
         private string _country;
 
-
-        public Teacher(string fname, string lname, DateTime birthdate, string addr1, string city, string state, long zip, string country, string addr2 = "")
+        public Person(string fname, string lname, DateTime birthdate, string addr1, string city, string state, long zip, string country, string addr2 = "")
         {
-            this.Fname = fname;
-            this.Lname = lname;
-            this.Birthdate = birthdate;
-            this.Addr1 = addr1;
-            this.Addr2 = addr2;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
-            this.Country = country;
-        }
-        public string Country
-        {
-            get
-            {
-                return _country;
-            }
-
-            set
-            {
-                _country = value;
-            }
+            Fname = fname;
+            Lname = lname;
+            Birthdate = birthdate;
+            Addr1 = addr1;
+            Addr2 = addr2;
+            City = city;
+            State = state;
+            Zip = zip;
+            Country = country;
         }
 
         public string Fname
@@ -145,6 +132,19 @@ namespace Module5
             set
             {
                 _zip = value;
+            }
+        }
+
+        public string Country
+        {
+            get
+            {
+                return _country;
+            }
+
+            set
+            {
+                _country = value;
             }
         }
     }

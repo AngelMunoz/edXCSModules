@@ -1,27 +1,38 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module5
+namespace Module7
 {
     class Course
     {
         private string _cName;
         private int _credits;
         private int _weeks;
-        private Teacher[] _teacher;
-        private Student[] _students;
+        private Teacher[] _teachers;
+        private ArrayList _students;
 
 
-        public Course(string cName, int credits, int weeks, Teacher[] teacher = null, Student[] students = null)
+        public Course(string cName, int credits, int weeks, Teacher[] teachers = null, ArrayList students = null)
         {
             this.CName = cName;
             this.Credits = credits;
             this.Weeks = weeks;
-            this.Teacher = teacher;
+            this.Teachers = teachers;
             this.Students = students;
+        }
+
+        public void ListStudents()
+        {
+            foreach (Student student in Students)
+            {
+                Console.WriteLine("Students in Course:");
+                // Console.WriteLine("Last Grade: {0}", student.Grades.Peek()); // checks for the last grade in the stack
+                Console.WriteLine("Student Name: {0}\nLast Name: {1}\n", student.Fname, student.Lname);
+            }
         }
         public string CName
         {
@@ -62,20 +73,20 @@ namespace Module5
             }
         }
 
-        public Teacher[] Teacher
+        public Teacher[] Teachers
         {
             get
             {
-                return _teacher;
+                return _teachers;
             }
 
             set
             {
-                _teacher = value;
+                _teachers = value;
             }
         }
 
-        public Student[] Students
+        public ArrayList Students
         {
             get
             {
