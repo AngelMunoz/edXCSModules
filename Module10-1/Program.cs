@@ -21,15 +21,17 @@ namespace RestrictionOperators
 
             //samples.Linq2(); // This sample uses the where clause to find all products that are out of stock
 
-            //samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
-                               // more than 3.00 per unit
-
-            //samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
-                               // uses a foreach loop to iterate over the orders collection that belongs to each 
-                               // customer
+            samples.Linq3(); // This sample uses the where clause to find all products that are in  stock and cost 
+                             // more than 3.00 per unit
+            Console.WriteLine();
+            samples.Linq4(); // This sample uses the where  clause to find all customers in Washington and then it 
+                             // uses a foreach loop to iterate over the orders collection that belongs to each 
+                             // customer
 
             //samples.Linq5(); // This sample demonstrates an indexed where clause that returns digits whose name is 
-                               // shorter than their value
+            // shorter than their value
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         public class Product
@@ -107,9 +109,13 @@ namespace RestrictionOperators
             {
                 List<Product> products = GetProductList();
 
-                //TODO: Create code to implement the functionality listed in the [Description] tag for this query
+                // This code uses the where clause to find all products that are in stock and  cost more than 3.00 per unit.
+                var expensiveInStockProducts =
+                    from product in products
+                    where product.UnitPrice > 3.00m
+                    select product;
 
-                Console.WriteLine("In-stock products that cost more than 3.00:");
+            Console.WriteLine("In-stock products that cost more than 3.00:");
                 foreach (var product in expensiveInStockProducts)
                 {
                     Console.WriteLine("{0} is in stock and costs more than 3.00.", product.ProductName);
@@ -121,8 +127,11 @@ namespace RestrictionOperators
             public void Linq4()
             {
                 List<Customer> customers = GetCustomerList();
-
-                //TODO: Create code to implement the functionality listed in the [Description] tag for this query
+                // This code uses the where clause to find all customers in Washington
+                var waCustomers =
+                    from customer in customers
+                    where customer.Region == "WA"
+                    select customer;
 
                 Console.WriteLine("Customers from Washington and their orders:");
                 foreach (var customer in waCustomers)
